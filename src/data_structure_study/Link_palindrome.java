@@ -207,7 +207,7 @@ public class Link_palindrome {
 	public static Node createNode(int value) {
 		return new Node(value, null);
 	}
-		
+	// Node结点
 	public static class Node {
 		private int data;
 		private Node next;
@@ -221,9 +221,23 @@ public class Link_palindrome {
 		}
 	}
 	// 单链表反转
-	public void reversal_link() {
+	public static Node reversal_link(Node list) {
+		Node headNode = null;
 		
+		Node previousNode = null;
+		Node currentNode = list;
+		while(currentNode != null) {
+			Node nextNode = currentNode.next;
+			if(nextNode == null) {
+				headNode = currentNode;
+			}
+			currentNode.next = previousNode;
+			previousNode = currentNode;
+			currentNode = nextNode;
+		}
+		return headNode;
 	}
+	
 	
 	public static void main(String[] args) {
 		Test link = new Test();
@@ -235,7 +249,6 @@ public class Link_palindrome {
 		
 		boolean link_palindrome = link.palindrome();	// 链表是否是回文数
 		System.out.println(link_palindrome);
-		
 		
 		
 	}
