@@ -4,7 +4,7 @@ import data_structure_test.Test;
 import data_structure_test.Test.Node;
 
 public class Link_palindrome {
-	private Node head = null;	// 头结点
+	private Node head = null;	// 头节点
 	//根据值查找
 	public Node findByValue(int value) {
 		Node p = head;
@@ -70,7 +70,7 @@ public class Link_palindrome {
 			q = q.next;
 		}
 		
-		if(q == null) {	// 没有找到p结点, 无法完成插入
+		if(q == null) {	// 没有找到p节点, 无法完成插入
 			return ;
 		}
 		
@@ -83,7 +83,7 @@ public class Link_palindrome {
 		Node newNode = new Node(value, null);
 		insertAfter(p, newNode);
 	}
-	// 插入一个结点
+	// 插入一个节点
 	public void insertAfter(Node p, Node newNode) {
 		if(p == null) return ;
 	
@@ -93,7 +93,7 @@ public class Link_palindrome {
 	
 	public void deleteByNode(Node p) {
 		if(p == null || head == null) return ;	
-		if(p == head) {	// 删除头结点
+		if(p == head) {	// 删除头节点
 			head = head.next;
 			return ;                  
 		}
@@ -102,7 +102,7 @@ public class Link_palindrome {
 		while(q != null && q.next != p) {
 			q = q.next;
 	 	}
-		if(q  == null) {	// 删除尾结点 是, 也是直接删除, 让上一个结点的next指向尾结点的next
+		if(q  == null) {	// 删除尾节点 是, 也是直接删除, 让上一个节点的next指向尾节点的next
 			return ;
 		}
 		
@@ -168,7 +168,7 @@ public class Link_palindrome {
 			if(q.next == null) {	// 表示这个一个奇数节点链表
 				leftLink = inverseLinkList(p);
 				rightLink = p;
-			}else {					// 表示这是一个偶数结点链表
+			}else {					// 表示这是一个偶数节点链表
 				leftLink = inverseLinkList(p);
 				rightLink = q;
 			}
@@ -203,11 +203,11 @@ public class Link_palindrome {
 		System.out.println();
 	}
 		
-	// 创建一个结点
+	// 创建一个节点
 	public static Node createNode(int value) {
 		return new Node(value, null);
 	}
-	// Node结点
+	// Node节点
 	public static class Node {
 		private int data;
 		private Node next;
@@ -224,16 +224,16 @@ public class Link_palindrome {
 	public static Node reversal_link(Node list) {
 		Node headNode = null;
 		
-		Node previousNode = null;
-		Node currentNode = list;
-		while(currentNode != null) {
-			Node nextNode = currentNode.next;
-			if(nextNode == null) {
-				headNode = currentNode;
+		Node previousNode = null;	// 前置的节点
+		Node currentNode = list;	// 当前的节点
+		while(currentNode != null) {	// 当前的节点不为null
+			Node nextNode = currentNode.next;	// 向下查找
+			if(nextNode == null) {	// 如果下一个节点为null
+				headNode = currentNode;	// 头节点就是这个节点
 			}
-			currentNode.next = previousNode;
-			previousNode = currentNode;
-			currentNode = nextNode;
+			currentNode.next = previousNode;	// 当前节点的下一个节点就是上一个节点, 头节点变尾节点
+			previousNode = currentNode;			// 
+			currentNode = nextNode;				// 当前节点变成下一个节点
 		}
 		return headNode;
 	}
