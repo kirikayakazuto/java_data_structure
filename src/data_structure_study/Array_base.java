@@ -1,4 +1,7 @@
 package data_structure_study;
+
+import java.util.ArrayList;
+
 /**
  * 
  * @author 邓朗
@@ -20,5 +23,55 @@ package data_structure_study;
  *  
  */
 public class Array_base {
-	// 数组详解
+	
+	public static void main(String[] args) {
+		// 数组详解
+		ArrayList<Node> array = new ArrayList<Node>();
+		
+		
+	}
+	
+	// 添加数据
+	public void addData(ArrayList<Node> array, int data) {
+		
+		for(int i=0; i<array.size(); i++) {	// 向list中添加数据
+			if(array.get(i).isFlag() == false) {	// 可以添加数据
+				array.get(i).data = data;
+				return ;
+			}
+		}
+		// 没有可以存数据的空间了, 整理空间
+		for(int i=0; i<array.size(); i++) {
+			if(array.get(i).isFlag() == true) {
+				// 向后移动位置
+				array.get(i).setFlag(false);	// 改变标记
+			}
+		}
+		
+	}
+	// 删除节点
+	public void removeDataByIndex(ArrayList<Node> array, int index) {
+		array.get(index).setFlag(true);
+	}
+	
+	
+	
+}
+
+// 结点
+class Node {
+	boolean flag = false;	// 标记
+	int data = 0;
+	public boolean isFlag() {
+		return flag;
+	}
+	public void setFlag(boolean flag) {
+		this.flag = flag;
+	}
+	public int getData() {
+		return data;
+	}
+	public void setData(int data) {
+		this.data = data;
+	}
 }
