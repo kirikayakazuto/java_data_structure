@@ -53,25 +53,25 @@ public class Array_base {
 	public void removeDataByIndex(ArrayList<Node> array, int index) {
 		array.get(index).setFlag(true);
 	}
-	
+	// 结点
+	private static class Node {
+		boolean flag = false;	// 标记
+		int data = 0;
+		public boolean isFlag() {
+			return flag;
+		}
+		public void setFlag(boolean flag) {
+			this.flag = flag;
+		}
+		public int getData() {
+			return data;
+		}
+		public void setData(int data) {
+			this.data = data;
+		}
+	}
+
 	
 	
 }
 
-// 结点
-class Node {
-	boolean flag = false;	// 标记
-	int data = 0;
-	public boolean isFlag() {
-		return flag;
-	}
-	public void setFlag(boolean flag) {
-		this.flag = flag;
-	}
-	public int getData() {
-		return data;
-	}
-	public void setData(int data) {
-		this.data = data;
-	}
-}
