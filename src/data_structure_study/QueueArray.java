@@ -19,7 +19,7 @@ public class QueueArray {
 		return true;
 	}
 	*/
-	public boolean enqueue(int item) {
+	public boolean enqueue(int item) {		// 没有扩容
 		if(tail == n) {	// 尾指针指向数组终点
 			if(head == 0) {	// 如果头指针指向数组起点
 				return false;

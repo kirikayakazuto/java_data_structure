@@ -37,6 +37,7 @@ public class StackArray {
 				array[i] = this.items[i];
 			}
 			this.items = array;
+			this.n = n * 2;
 		}
 		
 		this.items[count] = item;
