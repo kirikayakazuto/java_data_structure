@@ -41,7 +41,7 @@ public class MergeSort {
 
 		int[] tmp = new int[r-p+1];
 		for(int i=p, j=q+1, k=0; k<tmp.length; k++) {
-			if(j > r || i <= q && array[i] < array[j] ) {	// j>r时, 表示第二个子序列已经全部插入完毕, 剩余的直接插入第一个子序列
+			if(j > r || i <= q && array[i] <= array[j] ) {	// j>r时, 表示第二个子序列已经全部插入完毕, 剩余的直接插入第一个子序列
 				tmp[k] = array[i];
 				i++;
 			}else {
