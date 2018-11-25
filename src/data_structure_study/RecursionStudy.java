@@ -23,8 +23,12 @@ public class RecursionStudy {
 	public static Map<Integer, Integer> m = new HashMap<Integer, Integer>();
 	public static void main(String[] args) {
 		System.out.println(f(20));
+		
+		System.out.println(nof(20));
+		
+		
 	}
-	
+	// 递归实现
 	public static int f(int steps) {
 		if(steps == 1) {
 			return 1;
@@ -39,6 +43,25 @@ public class RecursionStudy {
 		int ret = f(steps-1) + f(steps-2);
 		m.put(steps, ret);
 		
+		return ret;
+	}
+	// 非递归实现
+	public static int nof(int steps) {
+		if(steps == 1) {
+			return 1;
+		}
+		if(steps == 2) {
+			return 2;
+		}
+		
+		int ret = 0;
+		int pre = 2;
+		int prepre = 1;
+		for(int i=3; i<=steps; i++) {
+			ret = pre + prepre;
+			prepre = pre;
+			pre = ret;
+		}
 		return ret;
 	}
 }
