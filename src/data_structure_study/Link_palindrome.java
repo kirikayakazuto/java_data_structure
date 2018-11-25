@@ -241,7 +241,7 @@ public class Link_palindrome {
 	
 	public static void main(String[] args) {
 		Test link = new Test();
-		int data[] = {1, 2, 2, 3, 2, 1};
+		int data[] = {1, 2, 2, 1};
 		for(int i=0; i<data.length; i++) {
 			link.insertTail(data[i]);
 		}
