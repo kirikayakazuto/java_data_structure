@@ -55,6 +55,28 @@ public class Sorts {
 			array[minIndex] = tmp;
 		}
 	}
+	// 希尔排序
+	public static void shellSort(int[] array, int len) {
+		if(len <= 1) {
+			return ;
+		}
+		int step = len / 2;
+		while(step >= 1) {
+			for(int i=step; i<len; i++) {
+				int value = array[i];
+				int j = i - step;
+				for(; j>=0; j-=step) {
+					if(value < array[j]) {
+						array[j+step] = array[j];
+					}else {
+						break;
+					}
+				}
+				array[j+step] = value;
+			}
+			step /= 2;
+		}
+	}
 	
 	public static void main(String[] args) {
 		int[] a = {2, 3, 1, 8, 4 ,5, 6, 7};
@@ -77,7 +99,16 @@ public class Sorts {
 			System.out.print(a2[i] + " ");
 		}
 		System.out.println();
+		
+		int[] a3 = {2, 3, 1, 8, 4 ,5, 6, 7};
+		shellSort(a3, 8);
+		for(int i=0; i<a3.length; i++) {
+			System.out.print(a3[i] + " ");
+		}
+		System.out.println();
 				
-				
+				// 1 20 2
+				// 2 23 3
+				// 28
 	}
 }
