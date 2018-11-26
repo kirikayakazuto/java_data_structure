@@ -72,5 +72,43 @@ public class QuickSort {
 			System.out.print(a[i] + " ");
 		}
 		System.out.println();
+		
+		int[] a1 = {3, 4, 1, 2, 5, 6, 9, 8, 7};
+		findMaxNumberByIndex(a1, 9, 5);
+		System.out.println(whichMax);
+	}
+	/**
+	 * 思考题, 如何在一个无序列表里, 快速查找出第k大的元素
+	 * 
+	 * 采用分治思想, 
+	 * @return
+	 */
+	public static void findMaxNumberByIndex(int[] array, int len, int index) {
+		if(index >= len) {
+			return ;
+		}
+		findNumber(array, 0, len-1, index);
+	}
+	
+	public static int whichMax = -1;
+	
+	public static void findNumber(int[] array, int p, int r, int index) {
+		if(p >= r) {	
+			whichMax = array[p];	
+			return ;                                 
+		}
+		// 找到分区点q
+		int q = partition(array, p, r);
+		if(q+1 == index) {
+			whichMax = array[q];
+			return ;
+		}
+		if(index <= q) {
+			// 在左边序列
+			findNumber(array, p, q-1, index);	
+		}else {
+			// 在右边序列
+			findNumber(array, q+1, r, index);	
+		}
 	}
 }
