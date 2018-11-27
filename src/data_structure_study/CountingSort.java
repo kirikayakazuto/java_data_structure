@@ -49,12 +49,55 @@ public class CountingSort {
 			array[i] = r[i];
 		}
 	}
+	// 对纯数值类型数据排序
+	public static void CountingSort_byNumber(int[] array, int len) {
+		if(len <= 1) {
+			return ;
+		}
+		// 找到数据中的最大值
+		int max = array[0];
+		for(int i=1; i<len; i++) {
+			if(max < array[i]) {
+				max = array[i];
+			}
+		}
+		// end
+		// 申请一个数组c, 下标大小为0到max
+		int[] c = new int[max + 1];
+		for(int i=0; i<max+1; i++) {
+			c[i] = 0;
+		}
+		// end
+		// 计算每个元素的个数, 并放入c数组中
+		for(int i=0; i<len; i++) {
+			c[array[i]] ++;
+		}
+		// end
+		int count = 0, i = 0;
+		while(i<len && count < max+1) {
+			if(c[count] == 0) {
+				count ++;
+			}else {
+				array[i] = count;
+				c[count] --;
+				i++;
+			}
+			
+		}
+	}
 	
 	public static void main(String[] args) {
 		int[] a = {3, 3, 0, 0, 2, 5, 12, 9, 1};
 		countingSort(a, 9);
 		for(int i=0; i<a.length; i++) {
 			System.out.print(a[i] + " ");
+		}
+		System.out.println();
+		
+		int[] a1 = {3, 3, 0, 0, 2, 5, 12, 9, 1};
+		CountingSort_byNumber(a1, 9);
+		for(int i=0; i<a1.length; i++) {
+			System.out.print(a1[i] + " ");
 		}
 		System.out.println();
 	}
