@@ -15,7 +15,7 @@ public class Dichotomy {
 		int end = array.length - 1;
 		
 		while(start <= end) {
-			int mid = (start + end) / 2;
+			int mid = start + ((end - start) >> 1);
 			if(value == array[mid]) {
 				return mid;
 			}
@@ -38,7 +38,7 @@ public class Dichotomy {
 		int start = 0;
 		int end = array.length - 1;
 		while(start <= end) {
-			int mid = (start + end) / 2;
+			int mid = start + ((end - start) >> 1);
 			if(value == array[mid]) {	// 对于已找到的数值
 				while(value == array[mid -= 1 * index]);
 				return mid+ 1 * index;
@@ -63,7 +63,7 @@ public class Dichotomy {
 		int start = 0;
 		int end = array.length - 1;
 		while(start <= end) {
-			int mid = (start + end) / 2;
+			int mid = start + ((end - start) >> 1);
 			if(value == array[mid]) {	// 对于已找到的数值
 				while(value == array[mid -= 1 * index]);	// 向左遍历
 				return mid+ 1 * index;
@@ -79,6 +79,28 @@ public class Dichotomy {
 		return start+ 1 * index;
 		
 	}
+	/**
+	 * 查找第一个值等于定值的元素,   
+	 * @param array
+	 * @param value
+	 * @return
+	 */
+	public static int bsearch(int[] array, int value) {
+		int start = 0;
+		int end = array.length - 1;
+		while(start <= end) {
+			int mid = start + ((end - start) >> 1); 	// 相当于(start + end) / 2
+			if(array[mid] >= value) {
+				end = mid - 1;
+			}else {
+				start = mid + 1;
+			}
+		}
+		if(start < array.length && array[start] == value) {
+			return start;
+		}
+		return -1;
+	}
 	
 	
 	public static void main(String[] args) {
@@ -93,5 +115,8 @@ public class Dichotomy {
 		int[] arr2 = {1, 2, 4, 6, 6, 6, 6, 9, 11, 20};
 		int index2 = dichotomyValue(arr2, 5, -1);
 		System.out.println(index2);
+		
+		int index3 = bsearch(arr2, 6);
+		System.out.println(index3);
 	}
 }
