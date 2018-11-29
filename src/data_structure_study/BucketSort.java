@@ -44,6 +44,7 @@ public class BucketSort {
 	public void insertSort(ArrayList<Integer> list) {
 		Collections.sort(list);
 	}
+	
 	public int[] getArray() {
 		int[] array = new int[arraySize];
 		Random r = new Random();
@@ -52,8 +53,6 @@ public class BucketSort {
 		}
 		return array;
 	}
-	
-
 	
 	public static void main(String[] args) {
 		
